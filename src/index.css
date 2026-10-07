@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+

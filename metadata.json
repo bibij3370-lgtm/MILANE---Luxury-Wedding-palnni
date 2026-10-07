@@ -1,0 +1,7 @@
+{
+  "name": "MILANÉ - Luxury Wedding Planning & Services Platform",
+  "description": "Discover, compare, book and manage luxury wedding venues, photographers, makeup artists, bridal services and complete wedding planning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

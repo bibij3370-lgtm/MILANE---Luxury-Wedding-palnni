@@ -1,0 +1,184 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and role info",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["customer", "vendor", "admin"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "name", "email", "role"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Product or service listing",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "category", "price"]
+    },
+    "InventoryItem": {
+      "title": "InventoryItem",
+      "description": "Inventory stock record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "itemName": { "type": "string" },
+        "category": { "type": "string" },
+        "quantity": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["itemName", "category", "quantity"]
+    },
+    "AlertItem": {
+      "title": "AlertItem",
+      "description": "System alert or notification",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "time": { "type": "string" }
+      },
+      "required": ["title", "message"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Client order or booking transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "serviceName": { "type": "string" },
+        "price": { "type": "number" },
+        "status": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["serviceName", "price"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Discount coupon",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "discount": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["code", "discount"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Client review and rating",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userName": { "type": "string" },
+        "serviceName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["userName", "rating", "comment"]
+    },
+    "Vendor": {
+      "title": "Vendor",
+      "description": "Vendor business profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessName": { "type": "string" },
+        "category": { "type": "string" },
+        "location": { "type": "string" },
+        "startingPrice": { "type": "number" },
+        "rating": { "type": "number" },
+        "verified": { "type": "boolean" },
+        "coverImage": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["businessName", "category"]
+    },
+    "BudgetItem": {
+      "title": "BudgetItem",
+      "description": "Wedding budget expense item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "notes": { "type": "string" },
+        "paid": { "type": "boolean" }
+      },
+      "required": ["category", "amount"]
+    },
+    "TaskItem": {
+      "title": "TaskItem",
+      "description": "Wedding planning checklist task",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "status": { "type": "string" },
+        "dueDate": { "type": "string" }
+      },
+      "required": ["title", "status"]
+    },
+    "CategoryItem": {
+      "title": "CategoryItem",
+      "description": "Service category management",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": { "type": "string" },
+        "itemCount": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "StoreSettings": {
+      "title": "StoreSettings",
+      "description": "Store and platform configuration",
+      "type": "object",
+      "properties": {
+        "platformName": { "type": "string" },
+        "adminEmail": { "type": "string" },
+        "supportPhone": { "type": "string" },
+        "currency": { "type": "string" },
+        "city": { "type": "string" },
+        "address": { "type": "string" },
+        "commissionRate": { "type": "number" },
+        "bookingDepositPercent": { "type": "number" },
+        "orderNotifications": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/products/{id}": { "schema": { "$ref": "Product" }, "description": "Products" },
+    "/inventory/{id}": { "schema": { "$ref": "InventoryItem" }, "description": "Inventory" },
+    "/alerts/{id}": { "schema": { "$ref": "AlertItem" }, "description": "Alerts" },
+    "/orders/{id}": { "schema": { "$ref": "Order" }, "description": "Orders" },
+    "/users/{id}": { "schema": { "$ref": "User" }, "description": "Users" },
+    "/coupons/{id}": { "schema": { "$ref": "Coupon" }, "description": "Coupons" },
+    "/reviews/{id}": { "schema": { "$ref": "Review" }, "description": "Reviews" },
+    "/vendors/{id}": { "schema": { "$ref": "Vendor" }, "description": "Vendors" },
+    "/budget/{id}": { "schema": { "$ref": "BudgetItem" }, "description": "Budget" },
+    "/tasks/{id}": { "schema": { "$ref": "TaskItem" }, "description": "Tasks" },
+    "/categories/{id}": { "schema": { "$ref": "CategoryItem" }, "description": "Categories" },
+    "/settings/{id}": { "schema": { "$ref": "StoreSettings" }, "description": "StoreSettings" }
+  }
+}
